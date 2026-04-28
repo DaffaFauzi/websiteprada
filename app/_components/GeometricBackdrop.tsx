@@ -7,8 +7,8 @@ export default function GeometricBackdrop({ className = "" }: { className?: stri
         className,
       ].join(" ")}
     >
-      <div className="absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-gold/20 blur-3xl" />
-      <div className="absolute -bottom-32 right-[-120px] h-[520px] w-[520px] rounded-full bg-surface-2 blur-3xl" />
+      <div className="absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,215,0,0.20),transparent_62%)]" />
+      <div className="absolute -bottom-32 right-[-120px] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.06),transparent_66%)]" />
 
       <svg
         className="absolute left-1/2 top-[-140px] h-[700px] w-[1100px] -translate-x-1/2 opacity-35"

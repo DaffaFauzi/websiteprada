@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SiteFooter from "@/app/_components/SiteFooter";
 import SiteHeader from "@/app/_components/SiteHeader";
@@ -8,6 +8,12 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -55,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className={`${poppins.variable} antialiased`}>
+      <body className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`}>
         <div className="min-h-dvh bg-ink text-snow">
           <SiteHeader />
           <main className="min-h-[60dvh]">{children}</main>
