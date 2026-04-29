@@ -109,7 +109,7 @@ export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs
         <div className="flex items-center gap-2 lg:pt-7">
           <button
             type="button"
-            className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-ink/40 px-4 text-sm font-semibold text-snow shadow-[0_12px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink/60 hover:shadow-[0_16px_55px_rgba(0,0,0,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
+            className="inline-flex min-h-[44px] min-w-[88px] items-center justify-center rounded-xl border border-border bg-ink/40 px-5 text-sm font-semibold text-snow shadow-[0_12px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink/60 hover:shadow-[0_16px_55px_rgba(0,0,0,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-95"
             onClick={prev}
             aria-label="Testimoni sebelumnya"
           >
@@ -117,7 +117,7 @@ export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs
           </button>
           <button
             type="button"
-            className="inline-flex h-10 items-center justify-center rounded-xl bg-gold px-4 text-sm font-semibold text-ink shadow-[0_14px_46px_rgba(255,215,0,0.18),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-95 hover:shadow-[0_18px_60px_rgba(255,215,0,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-snow/70"
+            className="inline-flex min-h-[44px] min-w-[88px] items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-ink shadow-[0_14px_46px_rgba(255,215,0,0.18),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-95 hover:shadow-[0_18px_60px_rgba(255,215,0,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-snow/70 active:scale-95"
             onClick={next}
             aria-label="Testimoni berikutnya"
           >
@@ -126,7 +126,7 @@ export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs
         </div>
       </div>
 
-      <div className="mt-8 grid gap-3 sm:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:gap-3 sm:grid-cols-3">
         {items.map((t, i) => {
           const active = i === index;
           return (
@@ -135,7 +135,7 @@ export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs
               type="button"
               onClick={() => setIndex(i)}
               className={[
-                "rounded-2xl border px-4 py-4 text-left transition-all duration-300 will-change-transform",
+                "rounded-2xl border px-5 py-5 sm:px-4 sm:py-4 text-left transition-all duration-300 will-change-transform active:scale-95",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
                 active
                   ? "border-gold/60 bg-gold/12 shadow-[0_18px_60px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)] scale-[1.02]"

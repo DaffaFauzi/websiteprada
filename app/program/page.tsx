@@ -59,28 +59,28 @@ export default function ProgramPage() {
         subtitle="PRADA BC menjalankan program latihan modern yang dirancang untuk mengembangkan kemampuan atlet secara menyeluruh."
       />
 
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-16 lg:py-20">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold tracking-tight text-snow">
+          <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start">
+            <div className="space-y-4 sm:space-y-5">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-snow">
                 Program Utama
               </h2>
-              <p className="text-sm leading-7 text-snow/80 sm:text-base">
+              <p className="max-w-prose text-sm leading-relaxed text-snow/80 sm:text-base lg:leading-8">
                 Dari latihan rutin hingga kompetisi, setiap program disusun untuk
                 membangun fondasi teknik yang kuat, daya tahan, serta mental
                 juara.
               </p>
-              <div className="grid gap-4">
+              <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5">
                 {PROGRAMS.map((p) => (
                   <div
                     key={p.title}
-                    className="rounded-2xl border border-border bg-surface/60 p-6"
+                    className="rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-8"
                   >
-                    <div className="text-base font-semibold text-snow">
+                    <div className="text-base sm:text-lg font-semibold text-snow">
                       {p.title}
                     </div>
-                    <div className="mt-2 text-sm leading-7 text-snow/80">
+                    <div className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/80 sm:leading-7">
                       {p.desc}
                     </div>
                   </div>
@@ -88,34 +88,34 @@ export default function ProgramPage() {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="rounded-2xl border border-border bg-gradient-to-br from-gold/12 via-surface/60 to-surface-2/60 p-6">
-                <h2 className="text-xl font-semibold tracking-tight text-snow">
+            <div className="space-y-6 sm:space-y-8">
+              <div className="rounded-2xl sm:rounded-3xl border border-border bg-gradient-to-br from-gold/12 via-surface/60 to-surface-2/60 p-6 sm:p-8">
+                <h2 className="text-base sm:text-lg font-semibold tracking-tight text-snow">
                   Galeri Kegiatan
                 </h2>
-                <p className="mt-2 text-sm leading-7 text-snow/80">
+                <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/80 sm:leading-7">
                   Cuplikan aktivitas latihan, sparring, dan momen kebersamaan di
                   PRADA BC.
                 </p>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
                 {GALLERY.map((img, idx) => (
                   <figure
                     key={`${img.src}-${idx}`}
-                    className="group relative overflow-hidden rounded-2xl border border-border bg-surface/60"
+                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-surface/60"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-gold/15 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                    <div className="relative flex aspect-[16/10] items-center justify-center p-8">
+                    <div className="relative flex aspect-[16/10] items-center justify-center p-6 sm:p-8">
                       <Image
                         src={img.src}
                         alt={img.alt}
                         width={120}
                         height={120}
-                        className="opacity-90"
+                        className="opacity-90 w-24 h-24 sm:w-[120px] sm:h-[120px] object-contain"
                       />
                     </div>
-                    <figcaption className="border-t border-border px-4 py-3 text-xs text-snow/75">
+                    <figcaption className="border-t border-border px-5 py-4 text-xs sm:text-sm text-snow/75 leading-relaxed">
                       {img.alt}
                     </figcaption>
                   </figure>

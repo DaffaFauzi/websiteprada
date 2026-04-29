@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import LogoMark from "@/app/_components/LogoMark";
+import Container from "@/app/_components/Container";
 
 type NavItem = {
   href: string;
@@ -46,17 +47,29 @@ export default function SiteHeader() {
     );
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-ink/95">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 border-b border-border bg-ink/95 backdrop-blur-sm">
+      <Container>
+        <div className="flex h-16 sm:h-20 items-center justify-between gap-4">
           <Link
             href="/"
-            className="group flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
+            className="group flex h-11 min-w-[44px] items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-95 transition-transform"
             aria-label="Beranda PRADA BC"
             onClick={() => setIsOpen(false)}
           >
-            <div className="flex h-14 items-center justify-center transition-transform group-hover:scale-110">
+            <div className="flex h-12 sm:h-14 items-center justify-center transition-transform group-hover:scale-105">
               <LogoMark className="h-full w-auto" />
             </div>
             <div className="hidden leading-tight sm:block">
@@ -164,121 +177,120 @@ export default function SiteHeader() {
             >
               Konsultasi
             </Link>
-            <div className="flex items-center gap-2 lg:hidden">
+            
+            {/* Hamburger Button */}
             <button
               type="button"
-              className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-surface/70 px-3 text-sm font-semibold text-snow hover:bg-surface-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
+              className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/5 lg:hidden active:scale-95 transition-transform"
               aria-controls="mobile-nav"
               aria-expanded={isOpen}
-              onClick={() => setIsOpen((v) => !v)}
+              onClick={() => setIsOpen(!isOpen)}
             >
-              Menu
+              <span className="sr-only">Toggle Menu</span>
+              <div
+                className={`h-[2px] w-5 rounded-full bg-snow transition-all duration-300 ${
+                  isOpen ? "translate-y-[8px] rotate-45" : ""
+                }`}
+              />
+              <div
+                className={`h-[2px] w-5 rounded-full bg-snow transition-all duration-300 ${
+                  isOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <div
+                className={`h-[2px] w-5 rounded-full bg-snow transition-all duration-300 ${
+                  isOpen ? "-translate-y-[8px] -rotate-45" : ""
+                }`}
+              />
             </button>
-            </div>
           </div>
         </div>
-      </div>
+      </Container>
 
+      {/* Mobile Fullscreen Menu */}
       <div
-        id="mobile-nav"
-        className={[
-          "lg:hidden",
-          isOpen ? "block" : "hidden",
-        ].join(" ")}
+        className={`fixed inset-0 top-16 sm:top-20 z-40 lg:hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
+        }`}
       >
-        <div className="border-t border-border bg-ink">
-          <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
-            <nav className="grid gap-1" aria-label="Navigasi mobile">
-              <Link
-                href={homeItem.href}
-                className={[
-                  "rounded-xl px-3 py-2 text-sm font-medium transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
-                  isActivePath(pathname, homeItem.href)
-                    ? "bg-gold/12 text-gold"
-                    : "text-snow/85 hover:bg-surface/70 hover:text-snow",
-                ].join(" ")}
-                onClick={() => setIsOpen(false)}
-              >
-                {homeItem.label}
-              </Link>
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-ink/95 backdrop-blur-md"
+          onClick={() => setIsOpen(false)}
+        />
+        
+        {/* Menu Content */}
+        <div className="absolute inset-x-0 top-0 max-h-[calc(100svh-4rem)] overflow-y-auto bg-ink/90 border-b border-white/10 px-5 py-8 pb-12 shadow-2xl">
+          <nav className="flex flex-col gap-6" aria-label="Navigasi mobile">
+            <Link
+              href={homeItem.href}
+              className={`text-xl font-medium tracking-tight transition-colors active:scale-95 ${
+                isActivePath(pathname, homeItem.href) ? "text-gold" : "text-snow hover:text-gold"
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              {homeItem.label}
+            </Link>
 
+            <div className="flex flex-col gap-4">
               <button
                 type="button"
-                className={[
-                  "flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
-                  aboutActive
-                    ? "bg-gold/12 text-gold"
-                    : "text-snow/85 hover:bg-surface/70 hover:text-snow",
-                ].join(" ")}
-                aria-expanded={isMobileAboutOpen}
-                aria-controls="mobile-about"
-                onClick={() => setIsMobileAboutOpen((v) => !v)}
+                className={`flex w-full items-center justify-between text-xl font-medium tracking-tight transition-colors active:scale-95 ${
+                  aboutActive ? "text-gold" : "text-snow hover:text-gold"
+                }`}
+                onClick={() => setIsMobileAboutOpen(!isMobileAboutOpen)}
               >
-                <span>Tentang Kami</span>
-                <span className="text-snow/60">{isMobileAboutOpen ? "▴" : "▾"}</span>
+                Tentang Kami
+                <span className={`text-sm transition-transform duration-300 ${isMobileAboutOpen ? "rotate-180" : ""}`}>▼</span>
               </button>
-              <div
-                id="mobile-about"
-                className={[
-                  "grid gap-1 pl-2",
-                  isMobileAboutOpen ? "block" : "hidden",
-                ].join(" ")}
-              >
+              
+              <div className={`flex flex-col gap-4 pl-4 border-l border-white/10 transition-all duration-300 overflow-hidden ${
+                isMobileAboutOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              }`}>
                 {aboutItems.map((item) => {
                   const active = isActivePath(pathname, item.href);
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={[
-                        "rounded-xl px-3 py-2 text-sm font-medium transition-colors",
-                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
-                        active
-                          ? "bg-gold/12 text-gold"
-                          : "text-snow/85 hover:bg-surface/70 hover:text-snow",
-                      ].join(" ")}
-                      onClick={() => {
-                        setIsMobileAboutOpen(false);
-                        setIsOpen(false);
-                      }}
+                      className={`text-lg font-medium tracking-tight transition-colors py-1 active:scale-95 ${
+                        active ? "text-gold" : "text-snow/80 hover:text-snow"
+                      }`}
+                      onClick={() => setIsOpen(false)}
                     >
                       {item.label}
                     </Link>
                   );
                 })}
               </div>
+            </div>
 
-              {secondaryItems.map((item) => {
-                const active = isActivePath(pathname, item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={[
-                      "rounded-xl px-3 py-2 text-sm font-medium transition-colors",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
-                      active
-                        ? "bg-gold/12 text-gold"
-                        : "text-snow/85 hover:bg-surface/70 hover:text-snow",
-                    ].join(" ")}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+            {secondaryItems.map((item) => {
+              const active = isActivePath(pathname, item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-xl font-medium tracking-tight transition-colors active:scale-95 ${
+                    active ? "text-gold" : "text-snow hover:text-gold"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
 
+            <div className="pt-6 mt-2 border-t border-white/10">
               <Link
                 href="/#kontak"
-                className="mt-2 inline-flex h-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 px-3 text-sm font-semibold text-snow/90 transition-colors duration-200 hover:bg-white/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
+                className="flex min-h-[52px] items-center justify-center rounded-2xl bg-gold px-6 text-base font-semibold text-ink transition-colors hover:bg-gold/90 active:scale-95"
                 onClick={() => setIsOpen(false)}
               >
-                Konsultasi
+                Konsultasi Program
               </Link>
-            </nav>
-          </div>
+            </div>
+          </nav>
         </div>
       </div>
     </header>

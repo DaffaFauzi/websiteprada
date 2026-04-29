@@ -30,7 +30,7 @@ export default function TestimoniPage() {
         subtitle="Kutipan dari atlet, orang tua, dan mitra yang merasakan dampak pembinaan dan budaya profesional PRADA BC."
       />
 
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-16 lg:py-20">
         <Container>
           <TestimonialsCarousel />
         </Container>
