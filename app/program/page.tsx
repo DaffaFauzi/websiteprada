@@ -42,12 +42,12 @@ const PROGRAMS = [
 ];
 
 const GALLERY = [
-  { src: "/file.svg", alt: "Dokumentasi kegiatan latihan PRADA BC" },
-  { src: "/globe.svg", alt: "Kegiatan sparring dan pengembangan atlet PRADA BC" },
-  { src: "/window.svg", alt: "Sesi latihan teknik dan footwork PRADA BC" },
-  { src: "/next.svg", alt: "Kegiatan pembinaan atlet muda PRADA BC" },
-  { src: "/vercel.svg", alt: "Suasana latihan dan kebersamaan PRADA BC" },
-  { src: "/file.svg", alt: "Kegiatan turnamen internal PRADA BC" },
+  { src: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=800&auto=format&fit=crop", alt: "Dokumentasi kegiatan latihan PRADA BC" },
+  { src: "https://images.unsplash.com/photo-1626721105368-a69248e93b32?q=80&w=800&auto=format&fit=crop", alt: "Kegiatan sparring dan pengembangan atlet PRADA BC" },
+  { src: "https://images.unsplash.com/photo-1659081463572-4c5903a309e6?q=80&w=800&auto=format&fit=crop", alt: "Sesi latihan teknik dan footwork PRADA BC" },
+  { src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop", alt: "Kegiatan pembinaan atlet muda PRADA BC" },
+  { src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=800&auto=format&fit=crop", alt: "Suasana latihan dan kebersamaan PRADA BC" },
+  { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop", alt: "Kegiatan turnamen internal PRADA BC" },
 ];
 
 export default function ProgramPage() {
@@ -103,19 +103,22 @@ export default function ProgramPage() {
                 {GALLERY.map((img, idx) => (
                   <figure
                     key={`${img.src}-${idx}`}
-                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-surface/60"
+                    className="group relative flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-surface/60"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold/15 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                    <div className="relative flex aspect-[16/10] items-center justify-center p-6 sm:p-8">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden">
                       <Image
                         src={img.src}
                         alt={img.alt}
-                        width={120}
-                        height={120}
-                        className="opacity-90 w-24 h-24 sm:w-[120px] sm:h-[120px] object-contain"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, 50vw"
                       />
+                      {/* Subtle dark overlay for premium feel */}
+                      <div className="absolute inset-0 bg-black/20 mix-blend-multiply pointer-events-none" />
+                      {/* Hover gold glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gold/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 pointer-events-none" />
                     </div>
-                    <figcaption className="border-t border-border px-5 py-4 text-xs sm:text-sm text-snow/75 leading-relaxed">
+                    <figcaption className="relative border-t border-border px-5 py-4 text-xs sm:text-sm font-medium text-snow/85 leading-relaxed bg-[#111112] z-10">
                       {img.alt}
                     </figcaption>
                   </figure>

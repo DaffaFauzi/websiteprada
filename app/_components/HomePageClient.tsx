@@ -73,16 +73,16 @@ export default function HomePageClient() {
   const heroVisuals = useMemo(
     () => [
       {
-        src: "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=1200&auto=format&fit=crop",
-        alt: "Atlet badminton profesional dalam aksi (editorial)",
+        src: "/FOTO3.webp",
+        alt: "Tim dan pelatih PRADA BC",
       },
       {
-        src: "https://images.unsplash.com/photo-1659081463572-4c5903a309e6?q=80&w=900&auto=format&fit=crop",
-        alt: "Pelatih membimbing atlet dalam sesi coaching (editorial)",
+        src: "/FOTO2.webp",
+        alt: "Atlet tunggal PRADA BC bersiap servis",
       },
       {
-        src: "https://images.unsplash.com/photo-1732955365693-fbd795199803?q=80&w=900&auto=format&fit=crop",
-        alt: "Sesi latihan tim badminton (editorial)",
+        src: "/FOTO4.webp",
+        alt: "Aksi pertandingan ganda PRADA BC",
       },
     ],
     [],
@@ -122,56 +122,68 @@ export default function HomePageClient() {
   const gallery = useMemo<GalleryItem[]>(
     () => [
       {
-        src: "https://images.unsplash.com/photo-1732955365687-164347626ee2?q=80&w=1200&auto=format&fit=crop",
+        src: "/FOTO1.webp",
         alt: "Sesi latihan teknik PRADA BC",
         gridClassName: "sm:col-span-2",
         aspectClassName: "aspect-[16/9]",
       },
       {
-        src: "https://images.unsplash.com/photo-1722087642932-9b070e9a066e?q=80&w=900&auto=format&fit=crop",
+        src: "/FOTO2.webp",
         alt: "Atlet berlatih smash",
         gridClassName: "sm:row-span-2",
         aspectClassName: "aspect-[3/4]",
       },
       {
-        src: "https://images.unsplash.com/photo-1617696618050-b0fef0c666af?q=80&w=1200&auto=format&fit=crop",
+        src: "/FOTO3.webp",
         alt: "Shuttlecock dan raket badminton",
         gridClassName: "",
         aspectClassName: "aspect-[4/3]",
       },
       {
-        src: "https://images.unsplash.com/photo-1626926938421-90124a4b83fa?q=80&w=1200&auto=format&fit=crop",
+        src: "/FOTO4.webp",
         alt: "Fasilitas lapangan badminton",
         gridClassName: "",
         aspectClassName: "aspect-[4/3]",
       },
       {
-        src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop",
+        src: "/FOTO5.webp",
         alt: "Suasana akademi badminton",
         gridClassName: "",
         aspectClassName: "aspect-[4/3]",
       },
       {
-        src: "https://images.unsplash.com/photo-1626721105368-a69248e93b32?q=80&w=900&auto=format&fit=crop",
+        src: "/FOTO6.webp",
         alt: "Momen pertandingan badminton",
         gridClassName: "",
         aspectClassName: "aspect-[3/4]",
       },
       {
-        src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop",
+        src: "/FOTO7.webp",
         alt: "Latihan fisik atlet badminton",
         gridClassName: "sm:col-span-2",
         aspectClassName: "aspect-[16/9]",
       },
       {
-        src: "https://images.unsplash.com/photo-1732955365687-152d8ce1f9ab?q=80&w=1200&auto=format&fit=crop",
+        src: "/FOTO8.webp",
         alt: "Pelatih memberi arahan strategi",
         gridClassName: "",
         aspectClassName: "aspect-[4/3]",
       },
       {
-        src: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=1200&auto=format&fit=crop",
+        src: "/FOTO9.webp",
         alt: "Kebersamaan tim PRADA BC",
+        gridClassName: "",
+        aspectClassName: "aspect-[4/3]",
+      },
+      {
+        src: "/FOTO10.webp",
+        alt: "Kegiatan atlet PRADA BC",
+        gridClassName: "",
+        aspectClassName: "aspect-[4/3]",
+      },
+      {
+        src: "/FOTO11.webp",
+        alt: "Dokumentasi PRADA BC",
         gridClassName: "",
         aspectClassName: "aspect-[4/3]",
       },
@@ -303,50 +315,83 @@ export default function HomePageClient() {
               </motion.div>
             </motion.div>
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              className="grid gap-3 sm:gap-4 grid-cols-2 mt-6 lg:mt-0"
-            >
-              <article className="col-span-2 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-white/12 bg-white/5">
-                <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10]">
+            <div className="relative w-full mt-10 lg:mt-0 lg:h-[620px]">
+              {/* Image 1: Main Action (Top Right on Desktop) */}
+              <motion.article 
+                initial={{ opacity: 0, x: 40, y: -20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.1 }}
+                className="group relative w-full lg:absolute lg:right-0 lg:top-0 lg:w-[76%] lg:h-[60%] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-white/10 bg-white/5 lg:shadow-2xl z-10 mb-4 sm:mb-5 lg:mb-0"
+              >
+                <motion.div 
+                  animate={{ y: [0, -6, 0] }} 
+                  transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
+                  className="relative w-full h-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:absolute lg:inset-0"
+                >
                   <Image
                     src={heroVisuals[0].src}
                     alt={heroVisuals[0].alt}
                     fill
-                    className="object-cover object-[50%_32%]"
+                    className="object-cover object-[50%_32%] transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                     sizes="(max-width: 1024px) 100vw, 700px"
                     priority
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30 lg:from-black/45 lg:via-black/10 lg:to-black/25" />
-                </div>
-              </article>
-              <article className="overflow-hidden rounded-2xl sm:rounded-[1.5rem] border border-white/12 bg-white/5">
-                <div className="relative aspect-square sm:aspect-[4/5]">
-                  <Image
-                    src={heroVisuals[1].src}
-                    alt={heroVisuals[1].alt}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 50vw, 320px"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30 lg:from-black/45 lg:via-black/10 lg:to-black/25" />
-                </div>
-              </article>
-              <article className="overflow-hidden rounded-2xl sm:rounded-[1.5rem] border border-white/12 bg-white/5">
-                <div className="relative aspect-square sm:aspect-[4/5]">
-                  <Image
-                    src={heroVisuals[2].src}
-                    alt={heroVisuals[2].alt}
-                    fill
-                    className="object-cover object-[50%_15%]"
-                    sizes="(max-width: 1024px) 50vw, 320px"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30 lg:from-black/45 lg:via-black/10 lg:to-black/25" />
-                </div>
-              </article>
-            </motion.div>
+                  <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/5" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent opacity-60 lg:opacity-80" />
+                </motion.div>
+              </motion.article>
+
+              {/* BOTTOM CONTAINER (For Mobile/Tablet Flow) */}
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 lg:block lg:gap-0">
+                {/* Image 2: Portrait Single (Bottom Left on Desktop) */}
+                <motion.article 
+                  initial={{ opacity: 0, x: -40, y: 30 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.3 }}
+                  className="group relative w-full sm:w-[45%] lg:w-[42%] lg:absolute lg:left-0 lg:bottom-0 lg:h-[68%] overflow-hidden rounded-2xl sm:rounded-[2rem] border border-white/10 bg-white/5 lg:shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-20"
+                >
+                  <motion.div 
+                    animate={{ y: [0, 8, 0] }} 
+                    transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
+                    className="relative w-full h-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-auto lg:absolute lg:inset-0"
+                  >
+                    <Image
+                      src={heroVisuals[1].src}
+                      alt={heroVisuals[1].alt}
+                      fill
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 400px"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/5" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  </motion.div>
+                </motion.article>
+
+                {/* Image 3: Team Landscape (Bottom Right on Desktop) */}
+                <motion.article 
+                  initial={{ opacity: 0, x: 40, y: 40 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.5 }}
+                  className="group relative w-full sm:w-[55%] lg:w-[48%] lg:absolute lg:right-[2%] lg:bottom-[4%] lg:h-[44%] overflow-hidden rounded-2xl sm:rounded-[2rem] border border-white/10 bg-white/5 lg:shadow-[-10px_20px_40px_rgba(0,0,0,0.5)] z-30 sm:mt-8 lg:mt-0"
+                >
+                  <motion.div 
+                    animate={{ y: [0, -5, 0] }} 
+                    transition={{ repeat: Infinity, duration: 5.5, ease: "easeInOut", delay: 2 }}
+                    className="relative w-full h-full aspect-[4/3] sm:aspect-[4/3] lg:aspect-auto lg:absolute lg:inset-0"
+                  >
+                    <Image
+                      src={heroVisuals[2].src}
+                      alt={heroVisuals[2].alt}
+                      fill
+                      className="object-cover object-[50%_25%] transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 55vw, 400px"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/5" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80" />
+                  </motion.div>
+                </motion.article>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -494,23 +539,23 @@ export default function HomePageClient() {
                     setActiveIndex(idx);
                   }}
                   className={[
-                    "group overflow-hidden rounded-2xl border border-white/12 bg-white/5 text-left",
+                    "group relative overflow-hidden rounded-2xl border border-white/12 bg-[#111112] text-left flex flex-col h-full",
                     "transition-colors duration-200 hover:border-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-[0.98] transform-gpu",
                     // Reset grid col/row span on mobile, use aspect ratio only
                     item.gridClassName ? item.gridClassName.replace(/sm:/g, "sm:") : "",
                   ].join(" ")}
                   aria-label={`Buka foto: ${item.alt}`}
                 >
-                  <div className={["relative aspect-video sm:aspect-auto", item.aspectClassName].join(" ")}>
+                  <div className={["relative w-full h-full flex-1 min-h-[250px]", item.aspectClassName].join(" ")}>
                     <Image
                       src={item.src}
                       alt={item.alt}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 260px"
                     />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3">
-                      <span className="text-xs font-medium text-snow/90">{item.alt}</span>
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-4 sm:p-5 z-10 pointer-events-none">
+                      <span className="text-xs sm:text-sm font-medium text-snow/90 leading-tight block drop-shadow-md">{item.alt}</span>
                     </div>
                   </div>
                 </motion.button>

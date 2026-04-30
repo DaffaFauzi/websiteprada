@@ -3,7 +3,7 @@ import { Poppins, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SiteFooter from "@/app/_components/SiteFooter";
 import SiteHeader from "@/app/_components/SiteHeader";
-
+import SplashScreen from "@/app/_components/SplashScreen";
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -60,9 +60,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (sessionStorage.getItem("hasVisitedPradaBC")) {
+                  document.documentElement.classList.add("splash-hidden");
+                } else {
+                  document.documentElement.classList.add("splash-active");
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`}>
-        <div className="min-h-dvh bg-ink text-snow">
+        <SplashScreen />
+        <div id="main-wrapper" className="min-h-dvh bg-ink text-snow transition-opacity duration-1000 ease-out">
           <SiteHeader />
           <main className="min-h-[60dvh]">{children}</main>
           <SiteFooter />
