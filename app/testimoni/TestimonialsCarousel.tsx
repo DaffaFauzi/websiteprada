@@ -68,9 +68,6 @@ export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 [background-image:radial-gradient(circle_at_24%_22%,rgba(255,215,0,0.22),transparent_55%),radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.10),transparent_55%)] group-hover:opacity-100" />
       <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
         <div className="max-w-2xl">
-          <div className="text-xs font-semibold uppercase tracking-wider text-gold">
-            Testimoni
-          </div>
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={index}
@@ -126,32 +123,6 @@ export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs
         </div>
       </div>
 
-      <div className="mt-8 grid gap-4 sm:gap-3 sm:grid-cols-3">
-        {items.map((t, i) => {
-          const active = i === index;
-          return (
-            <button
-              key={`${t.name}-${i}`}
-              type="button"
-              onClick={() => setIndex(i)}
-              className={[
-                "rounded-2xl border px-5 py-5 sm:px-4 sm:py-4 text-left transition-all duration-300 will-change-transform active:scale-95",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70",
-                active
-                  ? "border-gold/60 bg-gold/12 shadow-[0_18px_60px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)] scale-[1.02]"
-                  : "border-border bg-ink/30 opacity-85 blur-[0.2px] hover:opacity-100 hover:bg-ink/45 hover:blur-0 hover:-translate-y-0.5 hover:shadow-[0_18px_60px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)]",
-              ].join(" ")}
-              aria-label={`Pilih testimoni dari ${t.name}`}
-            >
-              <div className="text-sm font-semibold text-snow">{t.name}</div>
-              <div className="mt-1 text-xs text-snow/70">{t.role}</div>
-              <div className="mt-3 line-clamp-2 text-xs leading-6 text-snow/75">
-                “{t.quote}”
-              </div>
-            </button>
-          );
-        })}
-      </div>
     </div>
   );
 }

@@ -539,14 +539,13 @@ export default function HomePageClient() {
                     setActiveIndex(idx);
                   }}
                   className={[
-                    "group relative overflow-hidden rounded-2xl border border-white/12 bg-[#111112] text-left flex flex-col h-full",
+                    "group relative overflow-hidden rounded-2xl border border-white/12 bg-[#111112] text-left block w-full",
                     "transition-colors duration-200 hover:border-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-[0.98] transform-gpu",
-                    // Reset grid col/row span on mobile, use aspect ratio only
-                    item.gridClassName ? item.gridClassName.replace(/sm:/g, "sm:") : "",
+                    item.gridClassName || "",
                   ].join(" ")}
                   aria-label={`Buka foto: ${item.alt}`}
                 >
-                  <div className={["relative w-full h-full flex-1 min-h-[250px]", item.aspectClassName].join(" ")}>
+                  <div className={["relative w-full", item.aspectClassName].join(" ")}>
                     <Image
                       src={item.src}
                       alt={item.alt}
