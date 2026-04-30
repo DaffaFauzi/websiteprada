@@ -554,9 +554,6 @@ export default function HomePageClient() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 260px"
                     />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-4 sm:p-5 z-10 pointer-events-none">
-                      <span className="text-xs sm:text-sm font-medium text-snow/90 leading-tight block drop-shadow-md">{item.alt}</span>
-                    </div>
                   </div>
                 </motion.button>
               ))}
