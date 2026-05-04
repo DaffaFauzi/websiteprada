@@ -527,7 +527,7 @@ export default function HomePageClient() {
                 perjalanan pembinaan atlet.
               </p>
             </motion.div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="columns-1 sm:columns-3 lg:columns-4 gap-4 space-y-4">
               {gallery.map((item, idx) => (
                 <motion.button
                   key={item.alt}
@@ -539,19 +539,17 @@ export default function HomePageClient() {
                     setActiveIndex(idx);
                   }}
                   className={[
-                    "group relative overflow-hidden rounded-2xl border border-white/12 bg-[#111112] text-left block w-full",
+                    "group relative overflow-hidden rounded-2xl border border-white/12 bg-[#111112] text-left block w-full break-inside-avoid",
                     "transition-colors duration-200 hover:border-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-[0.98] transform-gpu",
-                    item.gridClassName || "",
                   ].join(" ")}
                   aria-label={`Buka foto: ${item.alt}`}
                 >
-                  <div className={["relative w-full", item.aspectClassName].join(" ")}>
-                    <Image
+                  <div className="relative w-full">
+                    <img
                       src={item.src}
                       alt={item.alt}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 260px"
+                      loading="lazy"
+                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                 </motion.button>
