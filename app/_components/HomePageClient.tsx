@@ -331,14 +331,14 @@ export default function HomePageClient() {
 
             <div className="relative w-full mt-10 lg:mt-0 lg:h-[620px]">
               {/* Image 1: Main Action (Top Right on Desktop) */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 40, y: -20 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.1 }}
                 className="relative w-full lg:absolute lg:right-0 lg:top-0 lg:w-[76%] lg:h-[60%] z-10 mb-4 sm:mb-5 lg:mb-0"
               >
-                <motion.article 
-                  animate={{ y: [0, -6, 0] }} 
+                <motion.article
+                  animate={{ y: [0, -6, 0] }}
                   transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
                   className="group relative w-full h-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-border bg-surface/60 lg:shadow-2xl"
                 >
@@ -360,14 +360,14 @@ export default function HomePageClient() {
               {/* BOTTOM CONTAINER (For Mobile/Tablet Flow) */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 lg:block lg:gap-0">
                 {/* Image 2: Portrait Single (Bottom Left on Desktop) */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: -40, y: 30 }}
                   animate={{ opacity: 1, x: 0, y: 0 }}
                   transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.3 }}
                   className="relative w-full sm:w-[45%] lg:w-[42%] lg:absolute lg:left-0 lg:bottom-0 lg:h-[68%] z-20"
                 >
-                  <motion.article 
-                    animate={{ y: [0, 8, 0] }} 
+                  <motion.article
+                    animate={{ y: [0, 8, 0] }}
                     transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
                     className="group relative w-full h-full overflow-hidden rounded-2xl sm:rounded-[2rem] border border-border bg-surface/60 lg:shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
                   >
@@ -386,14 +386,14 @@ export default function HomePageClient() {
                 </motion.div>
 
                 {/* Image 3: Team Landscape (Bottom Right on Desktop) */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: 40, y: 40 }}
                   animate={{ opacity: 1, x: 0, y: 0 }}
                   transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.5 }}
                   className="relative w-full sm:w-[55%] lg:w-[48%] lg:absolute lg:right-[2%] lg:bottom-[4%] lg:h-[44%] z-30 sm:mt-8 lg:mt-0"
                 >
-                  <motion.article 
-                    animate={{ y: [0, -5, 0] }} 
+                  <motion.article
+                    animate={{ y: [0, -5, 0] }}
                     transition={{ repeat: Infinity, duration: 5.5, ease: "easeInOut", delay: 2 }}
                     className="group relative w-full h-full overflow-hidden rounded-2xl sm:rounded-[2rem] border border-border bg-surface/60 lg:shadow-[-10px_20px_40px_rgba(0,0,0,0.5)]"
                   >
@@ -500,40 +500,40 @@ export default function HomePageClient() {
                 {dict.services.desc}
               </p>
             </motion.div>
-              <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {dict.services.programs.slice(0, 4).map((program, idx) => {
-                  const serviceIcons = [
-                    <svg key="1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
-                    <svg key="2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
-                    <svg key="3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,
-                    <svg key="4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  ];
-                  return (
-                    <motion.article
-                      key={idx}
-                      variants={fadeUp}
-                      className="group flex flex-col rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#fffdf9] hover:border-gold/30 hover:shadow-[0_25px_50px_-12px_rgba(197,164,109,0.15)] cursor-default"
-                    >
-                      <div className="mb-4 sm:mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold/15 text-gold transition-all duration-300 group-hover:scale-110 group-hover:bg-gold/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-                        {serviceIcons[idx]}
-                      </div>
-                      <h3 className="text-base sm:text-lg font-semibold text-snow transition-colors duration-300">{program.title}</h3>
-                      <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68 flex-1 transition-colors duration-300">{program.desc}</p>
-                      <Link href="/services" className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-gold hover:text-gold-2 active:scale-[0.98] transition-all duration-300 group-hover:translate-x-1">
-                        {dict.services.detailProgram} <span className="ml-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100">&rarr;</span>
-                      </Link>
-                    </motion.article>
-                  );
-                })}
-              </div>
-              <motion.div variants={fadeUp} className="flex justify-center pt-4">
-                <Link
-                  href="/services"
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-gold/40 bg-gold/5 px-10 text-sm font-semibold text-gold transition-all duration-300 hover:bg-gold/15 hover:border-gold/60 hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] active:scale-95"
-                >
-                  {dict.services.seeMore}
-                </Link>
-              </motion.div>
+            <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {dict.services.programs.slice(0, 4).map((program, idx) => {
+                const serviceIcons = [
+                  <svg key="1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>,
+                  <svg key="2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>,
+                  <svg key="3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg>,
+                  <svg key="4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                ];
+                return (
+                  <motion.article
+                    key={idx}
+                    variants={fadeUp}
+                    className="group flex flex-col rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#fffdf9] hover:border-gold/30 hover:shadow-[0_25px_50px_-12px_rgba(197,164,109,0.15)] cursor-default"
+                  >
+                    <div className="mb-4 sm:mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold/15 text-gold transition-all duration-300 group-hover:scale-110 group-hover:bg-gold/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                      {serviceIcons[idx]}
+                    </div>
+                    <h3 className="text-base sm:text-lg font-semibold text-snow transition-colors duration-300">{program.title}</h3>
+                    <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68 flex-1 transition-colors duration-300">{program.desc}</p>
+                    <Link href="/services" className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-gold hover:text-gold-2 active:scale-[0.98] transition-all duration-300 group-hover:translate-x-1">
+                      {dict.services.detailProgram} <span className="ml-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100">&rarr;</span>
+                    </Link>
+                  </motion.article>
+                );
+              })}
+            </div>
+            <motion.div variants={fadeUp} className="flex justify-center pt-4">
+              <Link
+                href="/services"
+                className="inline-flex h-12 items-center justify-center rounded-full border border-gold/40 bg-gold/5 px-10 text-sm font-semibold text-gold transition-all duration-300 hover:bg-gold/15 hover:border-gold/60 hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] active:scale-95"
+              >
+                {dict.services.seeMore}
+              </Link>
+            </motion.div>
           </motion.div>
         </Container>
       </section>
@@ -556,7 +556,7 @@ export default function HomePageClient() {
               {[gallery[0], gallery[3], gallery[6]].map((item, idx) => {
                 const originalIndices = [0, 3, 6];
                 const originalIdx = originalIndices[idx];
-                
+
                 return (
                   <motion.button
                     key={item.alt}
@@ -602,10 +602,10 @@ export default function HomePageClient() {
       {/* Testimonials Section */}
       <section id="testimoni" className="py-14 sm:py-20 bg-ink overflow-hidden border-b border-border/70">
         <Container>
-          <motion.div 
-            variants={stagger} 
-            initial="hidden" 
-            whileInView="show" 
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
             className="space-y-10 lg:space-y-14"
           >
@@ -615,8 +615,8 @@ export default function HomePageClient() {
                   {dict.about.testimonials}
                 </div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-snow leading-[1.1] lg:max-w-xl">
-                  {lang === 'id' 
-                    ? "Temukan bagaimana PRADA BC membantu atlet tumbuh dan berprestasi." 
+                  {lang === 'id'
+                    ? "Temukan bagaimana PRADA BC membantu atlet tumbuh dan berprestasi."
                     : "Discover how PRADA BC helps athletes grow and perform."}
                 </h2>
               </motion.div>
@@ -626,7 +626,7 @@ export default function HomePageClient() {
                 </p>
               </motion.div>
             </div>
-            
+
             <motion.div variants={fadeUp}>
               <TestimonialsCarousel autoPlayMs={6000} />
             </motion.div>
@@ -647,7 +647,7 @@ export default function HomePageClient() {
             {/* Background Decorative Accents */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-[#C9A227]/10 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[400px] h-[400px] bg-[#C9A227]/5 blur-[100px] rounded-full pointer-events-none" />
-            
+
             <div className="relative z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
               <div className="space-y-8 sm:space-y-10 text-center lg:text-left">
                 <div className="space-y-4 sm:space-y-6">
@@ -685,7 +685,7 @@ export default function HomePageClient() {
                   <div className="relative w-full max-w-sm">
                     {/* Abstract Floating Cards */}
                     <div className="space-y-6">
-                      <motion.div 
+                      <motion.div
                         whileHover={{ scale: 1.02, x: 5 }}
                         className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 sm:p-8 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] flex items-center gap-6"
                       >
@@ -700,7 +700,7 @@ export default function HomePageClient() {
                         </div>
                       </motion.div>
 
-                      <motion.div 
+                      <motion.div
                         whileHover={{ scale: 1.02, x: -5 }}
                         className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 sm:p-8 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] flex items-center gap-6 ml-12"
                       >
