@@ -102,18 +102,38 @@ export default function HomePageClient() {
       {
         title: "Program Latihan",
         desc: "Kurikulum teknik, fisik, dan taktik yang tersusun per level atlet.",
+        icon: (
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+        ),
       },
       {
         title: "Private Coaching",
         desc: "Sesi personal untuk target spesifik: teknik, footwork, dan strategi.",
+        icon: (
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        ),
       },
       {
         title: "Pembinaan Atlet",
         desc: "Pendampingan jangka panjang untuk jalur prestasi regional hingga nasional.",
+        icon: (
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          </svg>
+        ),
       },
       {
         title: "Konsultasi Program",
         desc: "Rekomendasi jalur latihan berdasarkan level, usia, dan tujuan atlet.",
+        icon: (
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          </svg>
+        ),
       },
     ],
     [],
@@ -500,12 +520,15 @@ export default function HomePageClient() {
                 <motion.article
                   key={program.title}
                   variants={fadeUp}
-                  className="flex flex-col rounded-2xl sm:rounded-3xl border border-white/12 bg-white/5 p-6 sm:p-6"
+                  className="group flex flex-col rounded-2xl sm:rounded-3xl border border-white/12 bg-white/5 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:border-white/25 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] cursor-default"
                 >
-                  <h3 className="text-base sm:text-lg font-semibold text-[#F6F2E9]">{program.title}</h3>
-                  <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68 flex-1">{program.desc}</p>
-                  <Link href="/program" className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-[#D0B26A] hover:text-[#E0C887] active:scale-[0.98] transition-transform">
-                    Detail Program
+                  <div className="mb-4 sm:mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#C9A227]/15 text-[#D0B26A] transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#C9A227]/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                    {program.icon}
+                  </div>
+                  <h3 className="text-base sm:text-lg font-semibold text-[#F6F2E9] transition-colors duration-300 group-hover:text-white">{program.title}</h3>
+                  <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68 flex-1 transition-colors duration-300 group-hover:text-snow/90">{program.desc}</p>
+                  <Link href="/program" className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-[#D0B26A] hover:text-[#E0C887] active:scale-[0.98] transition-all duration-300 group-hover:translate-x-1">
+                    Detail Program <span className="ml-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100">&rarr;</span>
                   </Link>
                 </motion.article>
               ))}
