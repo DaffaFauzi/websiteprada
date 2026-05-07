@@ -16,14 +16,14 @@ const GALLERY_IMAGES = [
 
 export default function ProgramClient() {
   const { dict } = useLanguage();
-  const p = dict.programPage;
+  const p = dict.programsPage;
 
   return (
     <div>
       <PageHero
-        eyebrow={p.hero.eyebrow}
+        eyebrow={p.hero.badge}
         title={p.hero.title}
-        subtitle={p.hero.subtitle}
+        subtitle={p.hero.desc}
       />
 
       <section className="py-12 sm:py-16 lg:py-20">
@@ -31,13 +31,13 @@ export default function ProgramClient() {
           <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start">
             <div className="space-y-4 sm:space-y-5">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-snow">
-                {p.mainProgram.title}
+                {p.mainPrograms.title}
               </h2>
               <p className="max-w-prose text-sm leading-relaxed text-snow/80 sm:text-base lg:leading-8">
-                {p.mainProgram.desc}
+                {p.mainPrograms.desc}
               </p>
               <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5">
-                {p.programs.map((prog, idx) => (
+                {p.mainPrograms.items.map((prog, idx) => (
                   <div
                     key={idx}
                     className="rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-8"

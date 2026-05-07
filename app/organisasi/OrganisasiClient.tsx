@@ -23,17 +23,17 @@ export default function OrganisasiClient() {
             <div className="lg:col-span-1">
               <div className="rounded-2xl sm:rounded-3xl border border-border bg-gradient-to-br from-gold/14 via-surface/60 to-surface-2/60 p-6 sm:p-8">
                 <h2 className="text-base sm:text-lg font-semibold text-snow">
-                  {o.apg.title}
+                  {o.sidebar.title}
                 </h2>
                 <p className="mt-3 sm:mt-4 text-sm leading-relaxed text-snow/80 sm:leading-7">
-                  {o.apg.desc}
+                  {o.sidebar.summary}
                 </p>
                 <div className="mt-5 sm:mt-6 rounded-2xl border border-border bg-ink/35 p-5 sm:p-6">
                   <div className="text-[10px] sm:text-[11px] uppercase tracking-wider text-snow/70">
-                    {o.apg.focus}
+                    {o.sidebar.focus}
                   </div>
                   <ul className="mt-3 sm:mt-4 space-y-3 text-sm text-snow/80">
-                    {o.apg.items.map((item, idx) => (
+                    {o.sidebar.items.map((item, idx) => (
                       <li key={idx} className="flex gap-3">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
                         <span className="leading-relaxed">{item}</span>

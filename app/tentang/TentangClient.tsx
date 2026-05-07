@@ -31,9 +31,9 @@ export default function TentangClient() {
                   {t.nilaiUtama}
                 </div>
                 <div className="mt-4 grid gap-3 sm:gap-4 sm:grid-cols-3">
-                  {t.nilai.map((n, i) => (
+                  {t.values.map((v, i) => (
                     <div key={i} className="flex min-h-[44px] items-center justify-center rounded-xl border border-border bg-ink/40 px-4 py-3 text-sm font-semibold text-snow text-center">
-                      {n}
+                      {v.title}
                     </div>
                   ))}
                 </div>
