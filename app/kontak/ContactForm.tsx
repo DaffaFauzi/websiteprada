@@ -13,7 +13,11 @@ function encode(value: string) {
   return encodeURIComponent(value);
 }
 
+import { useLanguage } from "@/app/_components/LanguageProvider";
+
 export default function ContactForm() {
+  const { dict } = useLanguage();
+  const f = dict.kontakPage.form;
   const [state, setState] = useState<FormState>({
     name: "",
     email: "",
@@ -107,7 +111,7 @@ export default function ContactForm() {
           type="submit"
           className="inline-flex h-11 items-center justify-center rounded-2xl bg-gold px-6 text-sm font-semibold text-ink hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-snow/70"
         >
-          Kirim Pesan
+          {f.title}
         </button>
       </div>
     </form>

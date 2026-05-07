@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from "@/app/_components/LanguageProvider";
 
 type Testimonial = {
   quote: string;
@@ -13,50 +14,33 @@ type Testimonial = {
 };
 
 export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs?: number }) {
+  const { dict } = useLanguage();
+  
   const items = useMemo<Testimonial[]>(
-    () => [
-      {
-        quote:
-          "PRADA BC bukan hanya klub, tapi keluarga yang mendukung kami untuk terus berprestasi.",
-        name: "Atlet PRADA BC",
-        role: "Atlet",
-        photoSrc: "/globe.svg",
-        photoAlt: "Foto atlet PRADA BC",
-      },
-      {
-        quote:
-          "Program latihannya terstruktur dan komunikasinya jelas. Perkembangan anak saya terasa nyata.",
-        name: "Orang Tua Atlet",
-        role: "Orang Tua",
-        photoSrc: "/file.svg",
-        photoAlt: "Foto orang tua atlet PRADA BC",
-      },
-      {
-        quote:
-          "Manajemen profesional dan visi pembinaan yang kuat. PRADA BC mitra yang tepat untuk kolaborasi.",
-        name: "Mitra Klub",
-        role: "Partner",
-        photoSrc: "/window.svg",
-        photoAlt: "Foto mitra PRADA BC",
-      },
-    ],
-    [],
+    () => dict.testimoniPage.carousel.items.map((item, idx) => ({
+      ...item,
+      // Map icons based on index or just use default icons
+      photoSrc: idx === 0 ? "/globe.svg" : idx === 1 ? "/file.svg" : "/window.svg"
+    })),
+    [dict.testimoniPage.carousel.items],
   );
 
   const [index, setIndex] = useState(0);
-  const current = items[index];
+  const current = items[index] || items[0];
   const [paused, setPaused] = useState(false);
 
   const prev = () => setIndex((v) => (v - 1 + items.length) % items.length);
   const next = () => setIndex((v) => (v + 1) % items.length);
 
   useEffect(() => {
-    if (!autoPlayMs || paused) return;
+    if (!autoPlayMs || paused || items.length === 0) return;
     const id = window.setInterval(() => {
       setIndex((v) => (v + 1) % items.length);
     }, autoPlayMs);
     return () => window.clearInterval(id);
   }, [autoPlayMs, items.length, paused]);
+
+  if (!current) return null;
 
   return (
     <div
@@ -108,17 +92,17 @@ export default function TestimonialsCarousel({ autoPlayMs = 5200 }: { autoPlayMs
             type="button"
             className="inline-flex min-h-[44px] min-w-[88px] items-center justify-center rounded-xl border border-border bg-ink/40 px-5 text-sm font-semibold text-snow shadow-[0_12px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink/60 hover:shadow-[0_16px_55px_rgba(0,0,0,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-95"
             onClick={prev}
-            aria-label="Testimoni sebelumnya"
+            aria-label={dict.testimoniPage.carousel.prev}
           >
-            Prev
+            {dict.testimoniPage.carousel.prev}
           </button>
           <button
             type="button"
             className="inline-flex min-h-[44px] min-w-[88px] items-center justify-center rounded-xl bg-gold px-5 text-sm font-semibold text-ink shadow-[0_14px_46px_rgba(255,215,0,0.18),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-95 hover:shadow-[0_18px_60px_rgba(255,215,0,0.24)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-snow/70 active:scale-95"
             onClick={next}
-            aria-label="Testimoni berikutnya"
+            aria-label={dict.testimoniPage.carousel.next}
           >
-            Next
+            {dict.testimoniPage.carousel.next}
           </button>
         </div>
       </div>

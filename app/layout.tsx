@@ -54,13 +54,15 @@ export const metadata: Metadata = {
   },
 };
 
+import { LanguageProvider } from "@/app/_components/LanguageProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -77,12 +79,14 @@ export default function RootLayout({
         />
       </head>
       <body className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`}>
-        <SplashScreen />
-        <div id="main-wrapper" className="min-h-dvh bg-ink text-snow transition-opacity duration-1000 ease-out">
-          <SiteHeader />
-          <main className="min-h-[60dvh]">{children}</main>
-          <SiteFooter />
-        </div>
+        <LanguageProvider>
+          <SplashScreen />
+          <div id="main-wrapper" className="min-h-dvh bg-ink text-snow transition-opacity duration-1000 ease-out">
+            <SiteHeader />
+            <main className="min-h-[60dvh]">{children}</main>
+            <SiteFooter />
+          </div>
+        </LanguageProvider>
       </body>
     </html>
   );

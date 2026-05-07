@@ -1,18 +1,23 @@
+"use client";
+
 import Link from "next/link";
 import LogoMark from "@/app/_components/LogoMark";
 import Container from "@/app/_components/Container";
-
-const FOOTER_LINKS = [
-  { href: "/", label: "Beranda" },
-  { href: "/tentang", label: "Tentang Kami" },
-  { href: "/program", label: "Program & Kegiatan" },
-  { href: "/prestasi", label: "Prestasi" },
-  { href: "/organisasi", label: "Organisasi" },
-  { href: "/testimoni", label: "Testimoni" },
-  { href: "/kontak", label: "Kontak" },
-];
+import { useLanguage } from "@/app/_components/LanguageProvider";
 
 export default function SiteFooter() {
+  const { dict } = useLanguage();
+
+  const FOOTER_LINKS = [
+    { href: "/", label: dict.footer.links.home },
+    { href: "/tentang", label: dict.footer.links.about },
+    { href: "/program", label: dict.footer.links.programs },
+    { href: "/prestasi", label: dict.footer.links.achievements },
+    { href: "/organisasi", label: dict.footer.links.organization },
+    { href: "/testimoni", label: dict.footer.links.testimonials },
+    { href: "/kontak", label: dict.footer.links.contact },
+  ];
+
   return (
     <footer className="border-t border-border bg-ink">
       <Container className="py-12 sm:py-16">
@@ -32,14 +37,12 @@ export default function SiteFooter() {
               </div>
             </div>
             <p className="max-w-prose text-sm leading-relaxed text-snow/80 sm:max-w-md sm:leading-6">
-              Klub badminton premium di bawah Ardana Perkasa Group. Fokus pada
-              pembinaan atlet, program latihan terstruktur, dan prestasi yang
-              menginspirasi.
+              {dict.footer.clubDesc}
             </p>
           </div>
 
           <div className="space-y-4">
-            <div className="text-sm font-semibold text-snow">Navigasi</div>
+            <div className="text-sm font-semibold text-snow">{dict.footer.navTitle}</div>
             <nav className="grid gap-3 text-sm" aria-label="Navigasi footer">
               {FOOTER_LINKS.map((l) => (
                 <Link
@@ -54,7 +57,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="space-y-4">
-            <div className="text-sm font-semibold text-snow">Media Sosial</div>
+            <div className="text-sm font-semibold text-snow">{dict.footer.socialTitle}</div>
             <div className="grid gap-3 text-sm text-snow/80">
               <a
                 href="#"
@@ -78,14 +81,14 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 sm:mt-16 flex flex-col gap-4 border-t border-white/10 pt-6 sm:pt-8 text-xs text-snow/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 sm:mt-16 flex flex-col gap-4 border-t border-border pt-6 sm:pt-8 text-xs text-snow/70 sm:flex-row sm:items-center sm:justify-between">
           <div className="order-2 sm:order-1 text-center sm:text-left">
-            © {new Date().getFullYear()} PRADA BC. Seluruh hak cipta dilindungi.
+            © {new Date().getFullYear()} PRADA BC. {dict.footer.rights}
           </div>
           <div className="order-1 sm:order-2 flex items-center justify-center sm:justify-end gap-2">
             <span className="inline-flex items-center gap-2 font-medium">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              Empowering Badminton Excellence
+              {dict.footer.empowering}
             </span>
           </div>
         </div>

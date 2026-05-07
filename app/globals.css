@@ -5,14 +5,14 @@
 }
 
 @theme inline {
-  --color-gold: #ffd700;
-  --color-gold-2: #c9a227;
-  --color-ink: #000000;
-  --color-snow: #ffffff;
-  --color-surface: #0b0b0b;
-  --color-surface-2: #0b0b0b;
-  --color-muted: #b8b8bd;
-  --color-border: color-mix(in srgb, var(--color-snow) 14%, transparent);
+  --color-gold: #c5a46d;
+  --color-gold-2: #a88442;
+  --color-ink: #f8f7f4;
+  --color-snow: #1a1a1a;
+  --color-surface: #ffffff;
+  --color-surface-2: #f3f3f1;
+  --color-muted: #6b6b6b;
+  --color-border: color-mix(in srgb, var(--color-snow) 10%, transparent);
   --font-sans: var(--font-poppins);
 
   @keyframes gradient-x {

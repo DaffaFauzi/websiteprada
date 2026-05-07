@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Container from "@/app/_components/Container";
-import PageHero from "@/app/_components/PageHero";
-import TestimonialsCarousel from "@/app/testimoni/TestimonialsCarousel";
+import TestimoniPageClient from "./TestimoniPageClient";
 
 export const metadata: Metadata = {
   title: "Testimoni",
@@ -22,20 +20,5 @@ export const metadata: Metadata = {
 };
 
 export default function TestimoniPage() {
-  return (
-    <div>
-      <PageHero
-        eyebrow="Testimoni"
-        title="Cerita nyata dari komunitas PRADA BC"
-        subtitle="Kutipan dari atlet, orang tua, dan mitra yang merasakan dampak pembinaan dan budaya profesional PRADA BC."
-      />
-
-      <section className="py-12 sm:py-16 lg:py-20">
-        <Container>
-          <TestimonialsCarousel />
-        </Container>
-      </section>
-    </div>
-  );
+  return <TestimoniPageClient />;
 }
-

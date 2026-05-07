@@ -8,13 +8,13 @@ export default function LogoMark({
   title?: string;
 }) {
   return (
-    <div className={[className, "flex items-center justify-center overflow-hidden bg-white rounded-[25%]"].join(" ")}>
+    <div className={[className, "relative flex items-center justify-center"].join(" ")}>
       <Image
         src="/pradabc.png"
         alt={title}
         width={180}
         height={135}
-        className="h-[90%] w-auto object-contain"
+        className="h-full w-auto object-contain"
         priority
       />
     </div>
