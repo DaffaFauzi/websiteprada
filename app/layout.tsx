@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     template: "%s | PRADA BC",
   },
   description:
-    "PRADA BC (Perkasa Ardana Badminton Club) adalah klub badminton asal Surabaya di bawah Ardana Perkasa Group, fokus pada pembinaan atlet dan prestasi.",
+    "PRADA BC (Perkasa Ardana Badminton Club) adalah klub badminton terkemuka di Indonesia di bawah Ardana Perkasa Group, fokus pada pembinaan atlet dan prestasi.",
   keywords: [
     "PRADA BC",
     "Perkasa Ardana Badminton Club",
-    "badminton Surabaya",
+    "badminton Indonesia",
     "klub bulutangkis",
     "pembinaan atlet",
     "Ardana Perkasa Group",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PRADA BC (Perkasa Ardana Badminton Club)",
     description:
-      "Klub badminton premium dari Surabaya di bawah Ardana Perkasa Group. Pembinaan atlet, program latihan, dan prestasi.",
+      "Klub badminton premium di Indonesia di bawah Ardana Perkasa Group. Pembinaan atlet, program latihan, dan prestasi.",
     url: "/",
     siteName: "PRADA BC",
     locale: "id_ID",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PRADA BC (Perkasa Ardana Badminton Club)",
     description:
-      "Klub badminton premium dari Surabaya di bawah Ardana Perkasa Group. Pembinaan atlet, program latihan, dan prestasi.",
+      "Klub badminton premium di Indonesia di bawah Ardana Perkasa Group. Pembinaan atlet, program latihan, dan prestasi.",
   },
 };
 
@@ -78,7 +78,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`}>
+      <body className={`${poppins.variable} ${spaceGrotesk.variable} antialiased`} suppressHydrationWarning>
         <LanguageProvider>
           <SplashScreen />
           <div id="main-wrapper" className="min-h-dvh bg-ink text-snow transition-opacity duration-1000 ease-out">

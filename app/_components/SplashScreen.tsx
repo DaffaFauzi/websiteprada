@@ -60,7 +60,7 @@ export default function SplashScreen() {
 
         {/* Brand Text */}
         <h1 className="text-2xl md:text-3xl font-display font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-snow via-gold to-snow animate-fade-in-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards] text-center drop-shadow-sm">
-          PRADA BC <span className="font-light">Surabaya</span>
+          PRADA BC <span className="font-light">Indonesia</span>
         </h1>
 
         {/* Subtext */}

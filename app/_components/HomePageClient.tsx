@@ -71,7 +71,7 @@ const slideImage = {
 };
 
 export default function HomePageClient() {
-  const { dict } = useLanguage();
+  const { lang, dict } = useLanguage();
 
   const heroVisuals = useMemo(
     () => [
@@ -292,7 +292,7 @@ export default function HomePageClient() {
                   {dict.hero.aboutClub}
                 </Link>
                 <Link
-                  href="/program"
+                  href="/services/programs"
                   className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-border bg-surface/60 px-8 text-sm font-semibold text-snow/88 transition-colors duration-200 hover:bg-white/9 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-[0.98]"
                 >
                   {dict.hero.viewPrograms}
@@ -459,7 +459,7 @@ export default function HomePageClient() {
               </motion.article>
             </div>
 
-            <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
               {[
                 {
                   id: "achievements",
@@ -473,12 +473,6 @@ export default function HomePageClient() {
                   desc: dict.about.organizationDesc,
                   href: "/organisasi",
                 },
-                {
-                  id: "testimonials",
-                  title: dict.about.testimonials,
-                  desc: dict.about.testimonialsDesc,
-                  href: "/testimoni",
-                },
               ].map((item) => (
                 <motion.article key={item.id} variants={fadeUp} className="flex flex-col rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6">
                   <h3 className="text-base sm:text-lg font-semibold text-snow">{item.title}</h3>
@@ -489,17 +483,11 @@ export default function HomePageClient() {
                 </motion.article>
               ))}
             </div>
-
-            <motion.div variants={fadeUp} className="rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-7">
-              <div className="mb-4 sm:mb-5 text-[11px] sm:text-xs font-medium uppercase tracking-[0.2em] text-gold">
-                {dict.about.communityTestimonials}
-              </div>
-              <TestimonialsCarousel autoPlayMs={5600} />
-            </motion.div>
           </motion.div>
         </Container>
       </section>
 
+      {/* Services Section */}
       <section id="layanan" className="scroll-mt-24 border-b border-border/70 bg-ink">
         <Container className="py-12 sm:py-16 lg:py-20">
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="space-y-8 sm:space-y-9">
@@ -513,7 +501,7 @@ export default function HomePageClient() {
               </p>
             </motion.div>
               <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                {dict.services.programs.map((program, idx) => {
+                {dict.services.programs.slice(0, 4).map((program, idx) => {
                   const serviceIcons = [
                     <svg key="1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
                     <svg key="2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
@@ -524,259 +512,329 @@ export default function HomePageClient() {
                     <motion.article
                       key={idx}
                       variants={fadeUp}
-                      className="group flex flex-col rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:border-gold/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] cursor-default"
+                      className="group flex flex-col rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:bg-[#fffdf9] hover:border-gold/30 hover:shadow-[0_25px_50px_-12px_rgba(197,164,109,0.15)] cursor-default"
                     >
-                      <div className="mb-4 sm:mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold/15 text-gold transition-transform duration-300 group-hover:scale-110 group-hover:bg-gold/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+                      <div className="mb-4 sm:mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold/15 text-gold transition-all duration-300 group-hover:scale-110 group-hover:bg-gold/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
                         {serviceIcons[idx]}
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold text-snow transition-colors duration-300">{program.title}</h3>
-                      <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68 flex-1 transition-colors duration-300 group-hover:text-snow">{program.desc}</p>
-                      <Link href="/program" className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-gold hover:text-gold-2 active:scale-[0.98] transition-all duration-300 group-hover:translate-x-1">
+                      <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68 flex-1 transition-colors duration-300">{program.desc}</p>
+                      <Link href="/services" className="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-gold hover:text-gold-2 active:scale-[0.98] transition-all duration-300 group-hover:translate-x-1">
                         {dict.services.detailProgram} <span className="ml-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100">&rarr;</span>
                       </Link>
                     </motion.article>
                   );
                 })}
               </div>
+              <motion.div variants={fadeUp} className="flex justify-center pt-4">
+                <Link
+                  href="/services"
+                  className="inline-flex h-12 items-center justify-center rounded-full border border-gold/40 bg-gold/5 px-10 text-sm font-semibold text-gold transition-all duration-300 hover:bg-gold/15 hover:border-gold/60 hover:shadow-[0_0_20px_rgba(212,175,55,0.2)] active:scale-95"
+                >
+                  {dict.services.seeMore}
+                </Link>
+              </motion.div>
           </motion.div>
         </Container>
       </section>
 
-      <section id="gallery" className="scroll-mt-24 border-b border-border/70 bg-surface-2">
-        <Container className="py-12 sm:py-16 lg:py-20">
-          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="space-y-8 sm:space-y-9">
-            <motion.div variants={fadeUp} className="space-y-3 sm:space-y-4">
-              <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.2em] text-gold">{dict.gallery.eyebrow}</div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight text-snow">
+      {/* Gallery Section */}
+      <section id="gallery" className="scroll-mt-24 border-b border-border/70 bg-ink">
+        <Container className="py-16 sm:py-20 lg:py-24">
+          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="space-y-12 sm:space-y-16">
+            <motion.div variants={fadeUp} className="text-center space-y-4 max-w-3xl mx-auto">
+              <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.25em] text-gold">{dict.gallery.eyebrow}</div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-snow leading-tight">
                 {dict.gallery.title}
               </h2>
-              <p className="max-w-prose text-sm sm:text-base leading-relaxed text-snow/72 lg:max-w-2xl lg:leading-8">
+              <p className="text-base sm:text-lg leading-relaxed text-snow/70">
                 {dict.gallery.desc}
               </p>
             </motion.div>
-            <div className="columns-1 sm:columns-3 lg:columns-4 gap-4 space-y-4">
-              {gallery.map((item, idx) => (
-                <motion.button
-                  key={item.alt}
-                  type="button"
-                  variants={fadeUp}
-                  onClick={() => {
-                    setDirection(0);
-                    setIsLightboxZoomed(false);
-                    setActiveIndex(idx);
-                  }}
-                  className={[
-                    "group relative overflow-hidden rounded-2xl border border-border bg-surface/60 text-left block w-full break-inside-avoid",
-                    "transition-colors duration-200 hover:border-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 active:scale-[0.98] transform-gpu",
-                  ].join(" ")}
-                  aria-label={`${dict.gallery.modal.openPhoto}${item.alt}`}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {[gallery[0], gallery[3], gallery[6]].map((item, idx) => {
+                const originalIndices = [0, 3, 6];
+                const originalIdx = originalIndices[idx];
+                
+                return (
+                  <motion.button
+                    key={item.alt}
+                    type="button"
+                    variants={fadeUp}
+                    onClick={() => {
+                      setDirection(0);
+                      setIsLightboxZoomed(false);
+                      setActiveIndex(originalIdx);
+                    }}
+                    className="group relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-border bg-surface/60 text-left block w-full transition-all duration-500 hover:border-gold/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] active:scale-[0.98] transform-gpu"
+                    aria-label={`${dict.gallery.modal.openPhoto}${item.alt}`}
+                  >
+                    <div className="absolute inset-0 z-0">
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                      />
+                      <div className="absolute inset-0 bg-gold/0 transition-colors duration-500 group-hover:bg-gold/5" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    </div>
+                  </motion.button>
+                );
+              })}
+            </div>
+
+            <motion.div variants={fadeUp} className="flex justify-center pt-4">
+              <Link
+                href="/gallery"
+                className="group relative inline-flex h-14 items-center justify-center rounded-full border border-gold/40 bg-gold/5 px-12 text-sm font-bold text-gold overflow-hidden transition-all duration-300 hover:border-gold/80 hover:shadow-[0_0_30px_rgba(201,162,39,0.25)] active:scale-95"
+              >
+                <span className="relative z-10 transition-colors duration-300 group-hover:text-ink">{dict.gallery.seeMore}</span>
+                <div className="absolute inset-0 bg-gold translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0" />
+              </Link>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimoni" className="py-14 sm:py-20 bg-ink overflow-hidden border-b border-border/70">
+        <Container>
+          <motion.div 
+            variants={stagger} 
+            initial="hidden" 
+            whileInView="show" 
+            viewport={{ once: true, amount: 0.1 }}
+            className="space-y-10 lg:space-y-14"
+          >
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-20">
+              <motion.div variants={fadeUp} className="space-y-4 sm:space-y-6">
+                <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.25em] text-gold">
+                  {dict.about.testimonials}
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-snow leading-[1.1] lg:max-w-xl">
+                  {lang === 'id' 
+                    ? "Temukan bagaimana PRADA BC membantu atlet tumbuh dan berprestasi." 
+                    : "Discover how PRADA BC helps athletes grow and perform."}
+                </h2>
+              </motion.div>
+              <motion.div variants={fadeUp} className="flex items-end">
+                <p className="text-base sm:text-lg text-snow/70 leading-relaxed max-w-xl lg:pb-2">
+                  {dict.about.testimonialsDesc}
+                </p>
+              </motion.div>
+            </div>
+            
+            <motion.div variants={fadeUp}>
+              <TestimonialsCarousel autoPlayMs={6000} />
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* Luxury Editorial CTA Section */}
+      <section className="bg-ink py-20 sm:py-24 lg:py-32">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative overflow-hidden rounded-[40px] border border-[#E7D7B7] bg-gradient-to-br from-[#FDFBF7] via-[#F7F1E7] to-[#EFE6D6] px-8 sm:px-12 lg:px-20 py-16 sm:py-20 lg:py-24 shadow-[0_20px_60px_rgba(201,168,97,0.15)]"
+          >
+            {/* Background Decorative Accents */}
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-[#C9A227]/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[400px] h-[400px] bg-[#C9A227]/5 blur-[100px] rounded-full pointer-events-none" />
+            
+            <div className="relative z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+              <div className="space-y-8 sm:space-y-10 text-center lg:text-left">
+                <div className="space-y-4 sm:space-y-6">
+                  <h2 className="text-4xl sm:text-5xl lg:text-6xl text-[#18181B] font-black tracking-tight leading-[1.05]">
+                    {dict.ctaHome.heading}
+                  </h2>
+                  <p className="text-lg sm:text-xl text-[#5F5F5F] leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    {dict.ctaHome.desc}
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
+                  <Link
+                    href={lang === "id" ? "/kontak" : "/contact"}
+                    className="group relative inline-flex h-14 sm:h-16 items-center justify-center rounded-full bg-[#C9A227] px-10 sm:px-12 text-sm sm:text-base font-bold text-ink shadow-[0_15px_30px_-5px_rgba(201,162,39,0.3)] transition-all duration-300 hover:shadow-[0_20px_40px_-5px_rgba(201,162,39,0.5)] hover:-translate-y-1 active:scale-95"
+                  >
+                    <span className="relative z-10">{dict.ctaHome.freeConsultation}</span>
+                  </Link>
+                  <Link
+                    href={lang === "id" ? "/kontak" : "/contact"}
+                    className="group relative inline-flex h-14 sm:h-16 items-center justify-center rounded-full border-2 border-[#C9A227]/30 bg-white/40 backdrop-blur-md px-10 sm:px-12 text-sm sm:text-base font-bold text-[#C9A227] transition-all duration-300 hover:bg-[#C9A227]/10 hover:border-[#C9A227]/60 hover:-translate-y-1 active:scale-95"
+                  >
+                    <span className="relative z-10">{dict.ctaHome.registerNow}</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Visual Decorative Element (Desktop Only) */}
+              <div className="hidden lg:block relative h-full min-h-[400px]">
+                <motion.div
+                  animate={{ y: [0, -20, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="relative w-full">
-                    <img
-                      src={item.src}
-                      alt={item.alt}
-                      loading="lazy"
-                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                  <div className="relative w-full max-w-sm">
+                    {/* Abstract Floating Cards */}
+                    <div className="space-y-6">
+                      <motion.div 
+                        whileHover={{ scale: 1.02, x: 5 }}
+                        className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 sm:p-8 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] flex items-center gap-6"
+                      >
+                        <div className="h-14 w-14 rounded-2xl bg-[#C9A227]/15 flex items-center justify-center text-[#C9A227]">
+                          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-black text-[#18181B]">120+</div>
+                          <div className="text-xs font-bold text-[#5F5F5F] uppercase tracking-[0.2em]">Tournament Medals</div>
+                        </div>
+                      </motion.div>
+
+                      <motion.div 
+                        whileHover={{ scale: 1.02, x: -5 }}
+                        className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 sm:p-8 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] flex items-center gap-6 ml-12"
+                      >
+                        <div className="h-14 w-14 rounded-2xl bg-[#C9A227]/15 flex items-center justify-center text-[#C9A227]">
+                          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <div className="text-3xl font-black text-[#18181B]">100+</div>
+                          <div className="text-xs font-bold text-[#5F5F5F] uppercase tracking-[0.2em]">Active Athletes</div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Background Decorative Shapes */}
+                    <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#C9A227]/10 rounded-full blur-xl animate-pulse" />
+                    <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-[#C9A227]/5 rounded-full blur-2xl animate-pulse" />
                   </div>
-                </motion.button>
-              ))}
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </Container>
+      </section>
 
-        <AnimatePresence>
-          {activeIndex !== null ? (
+      <AnimatePresence>
+        {activeIndex !== null ? (
+          <motion.div
+            className="fixed inset-0 z-[60] grid place-items-center bg-ink/40 backdrop-blur-md px-4 py-10"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Galeri foto"
+            variants={modalOverlay}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            onClick={closeModal}
+          >
             <motion.div
-              className="fixed inset-0 z-[60] grid place-items-center bg-ink/40 backdrop-blur-md px-4 py-10"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Galeri foto"
-              variants={modalOverlay}
+              variants={modalPanel}
               initial="hidden"
               animate="show"
               exit="exit"
-              onClick={closeModal}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-5xl overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-surface"
             >
-              <motion.div
-                variants={modalPanel}
-                initial="hidden"
-                animate="show"
-                exit="exit"
-                onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-5xl overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-surface"
+              <button
+                type="button"
+                onClick={closeModal}
+                className="absolute right-2 top-2 sm:right-4 sm:top-4 z-10 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-border bg-surface/80 text-snow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 backdrop-blur-sm active:scale-95 transition-transform"
+                aria-label={dict.gallery.modal.close}
               >
-                <button
-                  type="button"
-                  onClick={closeModal}
-                  className="absolute right-2 top-2 sm:right-4 sm:top-4 z-10 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-border bg-surface/80 text-snow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 backdrop-blur-sm active:scale-95 transition-transform"
-                  aria-label={dict.gallery.modal.close}
-                >
-                  ✕
-                </button>
-                <div className="grid lg:grid-cols-[1fr_280px]">
-                  <div className="relative bg-surface flex flex-col justify-center">
-                    <div className="relative aspect-square sm:aspect-[16/10] w-full">
-                      <AnimatePresence initial={false} custom={direction} mode="wait">
+                ✕
+              </button>
+              <div className="grid lg:grid-cols-[1fr_280px]">
+                <div className="relative bg-surface flex flex-col justify-center">
+                  <div className="relative aspect-square sm:aspect-[16/10] w-full">
+                    <AnimatePresence initial={false} custom={direction} mode="wait">
+                      <motion.div
+                        key={activeIndex}
+                        custom={direction}
+                        variants={slideImage}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        className="absolute inset-0"
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={0.14}
+                        onDragEnd={(_, info) => {
+                          if (info.offset.x > 80) go(-1);
+                          if (info.offset.x < -80) go(1);
+                        }}
+                        onDoubleClick={() => setIsLightboxZoomed((v) => !v)}
+                      >
                         <motion.div
-                          key={activeIndex}
-                          custom={direction}
-                          variants={slideImage}
-                          initial="enter"
-                          animate="center"
-                          exit="exit"
                           className="absolute inset-0"
-                          drag="x"
-                          dragConstraints={{ left: 0, right: 0 }}
-                          dragElastic={0.14}
-                          onDragEnd={(_, info) => {
-                            if (info.offset.x > 80) go(-1);
-                            if (info.offset.x < -80) go(1);
-                          }}
-                          onDoubleClick={() => setIsLightboxZoomed((v) => !v)}
+                          animate={{ scale: isLightboxZoomed ? 1.08 : 1.01 }}
+                          transition={{ duration: 0.2, ease: EASE_OUT }}
                         >
-                          <motion.div
-                            className="absolute inset-0"
-                            animate={{ scale: isLightboxZoomed ? 1.08 : 1.01 }}
-                            transition={{ duration: 0.2, ease: EASE_OUT }}
-                          >
-                            <Image
-                              src={gallery[activeIndex].src}
-                              alt={gallery[activeIndex].alt}
-                              fill
-                              className="object-contain"
-                              sizes="(max-width: 1024px) 100vw, 860px"
-                              priority
-                            />
-                          </motion.div>
+                          <Image
+                            src={gallery[activeIndex].src}
+                            alt={gallery[activeIndex].alt}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 1024px) 100vw, 860px"
+                            priority
+                          />
                         </motion.div>
-                      </AnimatePresence>
-                    </div>
-                    <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-3 sm:p-4 bg-gradient-to-t from-ink/60 to-transparent">
-                      <button
-                        type="button"
-                        onClick={() => go(-1)}
-                        className="rounded-full border border-border bg-surface/80 px-5 py-2 sm:px-4 min-h-[44px] text-sm font-medium text-snow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 backdrop-blur-sm active:scale-95 transition-transform"
-                      >
-                        {dict.gallery.modal.prev}
-                      </button>
-                      <div className="text-[11px] sm:text-xs font-medium tracking-widest text-snow/70">
-                        {activeIndex + 1} / {gallery.length}
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => go(1)}
-                        className="rounded-full border border-[#C9A227]/55 bg-gold/18 px-5 py-2 sm:px-4 min-h-[44px] text-sm font-medium text-[#E2C77E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 backdrop-blur-sm active:scale-95 transition-transform"
-                      >
-                        {dict.gallery.modal.next}
-                      </button>
-                    </div>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
-                  <div className="border-t border-border bg-surface-2 p-5 sm:p-6 lg:border-l lg:border-t-0 flex flex-col justify-center">
-                    <div className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-gold">
-                      {dict.gallery.modal.detail}
-                    </div>
-                    <h3 className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold text-snow">{gallery[activeIndex].alt}</h3>
-                    <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68">
-                      {dict.gallery.modal.desc}
-                    </p>
-                    <Link
-                      href="/#kontak"
-                      className="mt-4 sm:mt-5 inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/15 bg-surface/60 px-6 text-sm font-medium text-snow/90 hover:bg-white/10 active:scale-95 transition-transform"
-                      onClick={closeModal}
-                    >
-                      {dict.gallery.modal.consultation}
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-      </section>
-
-      <section id="kontak" className="scroll-mt-24 bg-ink">
-        <Container className="py-12 sm:py-16 lg:py-20">
-          <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="space-y-8 sm:space-y-9">
-            <motion.div variants={fadeUp} className="max-w-3xl space-y-3 sm:space-y-4">
-              <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.2em] text-gold">{dict.contact.eyebrow}</div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight text-snow">
-                {dict.contact.title}
-              </h2>
-              <p className="max-w-prose text-sm sm:text-base leading-relaxed text-snow/72 lg:leading-8">
-                {dict.contact.desc}
-              </p>
-            </motion.div>
-
-            <div className="grid gap-5 sm:gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-              <motion.div variants={fadeUp} className="flex flex-col gap-4">
-                <article className="rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-snow">{dict.contact.consultation}</h3>
-                  <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68">
-                    {dict.contact.consultationDesc}
-                  </p>
-                </article>
-                <article className="rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-snow">{dict.contact.location}</h3>
-                  <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68">
-                    {dict.contact.locationDesc}
-                  </p>
-                </article>
-                <article className="rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-snow">WhatsApp</h3>
-                  <Link
-                    href="https://wa.me/6281234567890"
-                    className="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-full border border-[#C9A227]/45 bg-gold/14 px-6 text-sm font-medium text-[#E2C77E] hover:bg-gold/20 active:scale-[0.98] transition-transform"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {dict.contact.chatWa}
-                  </Link>
-                </article>
-              </motion.div>
-
-              <motion.div variants={fadeUp} className="space-y-4">
-                <form className="rounded-2xl sm:rounded-3xl border border-border bg-surface/60 p-6 sm:p-7">
-                  <h3 className="text-base sm:text-lg font-semibold text-snow">{dict.contact.formTitle}</h3>
-                  <div className="mt-4 grid gap-4">
-                    <input
-                      type="text"
-                      placeholder={dict.contact.name}
-                      className="min-h-[44px] w-full rounded-xl border border-border bg-surface-2 px-4 text-sm text-snow placeholder:text-snow/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 transition-colors"
-                    />
-                    <input
-                      type="tel"
-                      placeholder={dict.contact.waNo}
-                      className="min-h-[44px] w-full rounded-xl border border-border bg-surface-2 px-4 text-sm text-snow placeholder:text-snow/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 transition-colors"
-                    />
-                    <textarea
-                      placeholder={dict.contact.message}
-                      rows={4}
-                      className="min-h-[120px] w-full rounded-xl border border-border bg-surface-2 px-4 py-3 text-sm text-snow placeholder:text-snow/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 transition-colors"
-                    />
+                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-3 sm:p-4 bg-gradient-to-t from-ink/60 to-transparent">
                     <button
-                      type="submit"
-                      className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-gold px-6 text-sm font-semibold text-ink transition-colors hover:bg-gold-2 active:scale-[0.98] transform-gpu"
+                      type="button"
+                      onClick={() => go(-1)}
+                      className="rounded-full border border-border bg-surface/80 px-5 py-2 sm:px-4 min-h-[44px] text-sm font-medium text-snow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 backdrop-blur-sm active:scale-95 transition-transform"
                     >
-                      {dict.contact.send}
+                      {dict.gallery.modal.prev}
+                    </button>
+                    <div className="text-[11px] sm:text-xs font-medium tracking-widest text-snow/70">
+                      {activeIndex + 1} / {gallery.length}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => go(1)}
+                      className="rounded-full border border-[#C9A227]/55 bg-gold/18 px-5 py-2 sm:px-4 min-h-[44px] text-sm font-medium text-[#E2C77E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 backdrop-blur-sm active:scale-95 transition-transform"
+                    >
+                      {dict.gallery.modal.next}
                     </button>
                   </div>
-                </form>
-
-                <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-surface/60">
-                  <iframe
-                    title="Map PRADA BC Surabaya"
-                    src="https://www.google.com/maps?q=Surabaya&output=embed"
-                    className="h-48 sm:h-64 w-full"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
                 </div>
-              </motion.div>
-            </div>
+                <div className="border-t border-border bg-surface-2 p-5 sm:p-6 lg:border-l lg:border-t-0 flex flex-col justify-center">
+                  <div className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-gold">
+                    {dict.gallery.modal.detail}
+                  </div>
+                  <h3 className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold text-snow">{gallery[activeIndex].alt}</h3>
+                  <p className="mt-2 sm:mt-3 text-sm leading-relaxed text-snow/68">
+                    {dict.gallery.modal.desc}
+                  </p>
+                  <Link
+                    href={lang === "id" ? "/kontak" : "/contact"}
+                    className="mt-4 sm:mt-5 inline-flex min-h-[44px] items-center justify-center rounded-full border border-white/15 bg-surface/60 px-6 text-sm font-medium text-snow/90 hover:bg-white/10 active:scale-95 transition-transform"
+                    onClick={closeModal}
+                  >
+                    {dict.gallery.modal.consultation}
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-        </Container>
-      </section>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }

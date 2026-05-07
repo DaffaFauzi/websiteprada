@@ -84,7 +84,7 @@ export default function OpenGraphImage() {
                 PRADA BC
               </div>
               <div style={{ fontSize: "18px", color: "rgba(255,255,255,0.75)" }}>
-                Perkasa Ardana Badminton Club • Surabaya
+                Perkasa Ardana Badminton Club • Indonesia
               </div>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function OpenGraphImage() {
               maxWidth: "860px",
             }}
           >
-            Klub badminton premium dari Surabaya di bawah Ardana Perkasa Group —
+            Klub badminton premium di Indonesia di bawah Ardana Perkasa Group —
             pembinaan atlet, program latihan terstruktur, dan prestasi yang
             menginspirasi.
           </div>

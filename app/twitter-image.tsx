@@ -90,7 +90,7 @@ export default function TwitterImage() {
               maxWidth: "880px",
             }}
           >
-            Klub badminton premium dari Surabaya di bawah Ardana Perkasa Group.
+            Klub badminton premium di Indonesia di bawah Ardana Perkasa Group.
             Pembinaan atlet, program latihan, dan prestasi.
           </div>
         </div>
