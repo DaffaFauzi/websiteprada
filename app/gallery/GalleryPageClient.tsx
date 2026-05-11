@@ -160,7 +160,10 @@ export default function GalleryPageClient() {
             <motion.div variants={fadeUp} className="inline-flex items-center rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-gold uppercase mb-6">
               {dict.gallery.eyebrow}
             </motion.div>
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 [font-family:var(--font-display)]">
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight italic text-snow leading-[1.1] mb-6"
+            >
               {dict.galleryPage.hero.title}
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-snow/70 leading-relaxed">

@@ -196,22 +196,22 @@ export default function ConsultationClient() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold uppercase tracking-widest text-snow/40 italic px-2">{p.form.labels.name}</label>
-                      <input required type="text" className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
+                      <input required type="text" className="w-full h-14 bg-white border border-snow/20 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold uppercase tracking-widest text-snow/40 italic px-2">{p.form.labels.parentName}</label>
-                      <input required type="text" className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
+                      <input required type="text" className="w-full h-14 bg-white border border-snow/20 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold uppercase tracking-widest text-snow/40 italic px-2">{p.form.labels.age}</label>
-                      <input required type="number" className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
+                      <input required type="number" className="w-full h-14 bg-white border border-snow/20 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold uppercase tracking-widest text-snow/40 italic px-2">{p.form.labels.level}</label>
-                      <select required className="w-full h-14 bg-ink border border-white/10 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium appearance-none">
+                      <select required className="w-full h-14 bg-white border border-snow/20 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium appearance-none">
                         <option>Beginner</option>
                         <option>Intermediate</option>
                         <option>Competitive</option>
@@ -221,12 +221,12 @@ export default function ConsultationClient() {
 
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-snow/40 italic px-2">{p.form.labels.goal}</label>
-                    <input required type="text" className="w-full h-14 bg-white/5 border border-white/10 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
+                    <input required type="text" className="w-full h-14 bg-white border border-snow/20 rounded-2xl px-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-[10px] font-bold uppercase tracking-widest text-snow/40 italic px-2">{p.form.labels.message}</label>
-                    <textarea className="w-full min-h-[120px] bg-white/5 border border-white/10 rounded-2xl p-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
+                    <textarea className="w-full min-h-[120px] bg-white border border-snow/20 rounded-2xl p-6 text-snow focus:outline-none focus:border-gold transition-colors font-medium" />
                   </div>
 
                   <div className="pt-4 space-y-4">

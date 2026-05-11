@@ -61,15 +61,15 @@ export default function TentangPageClient() {
   return (
     <div className="relative overflow-hidden bg-ink text-snow">
       {/* 1. HERO SECTION */}
-      <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 overflow-hidden border-b border-border/50">
+      <section className="relative overflow-hidden border-b border-border/50">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.15),transparent_50%)]" />
-        <Container className="relative">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <Container className="relative pt-16 pb-16 sm:pt-20 sm:pb-24 lg:pt-28 lg:pb-32">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-center">
             <motion.div 
               variants={stagger} 
               initial="hidden" 
               animate="show"
-              className="space-y-8"
+              className="space-y-5 lg:space-y-6"
             >
               <motion.div variants={fadeUp} className="inline-flex items-center rounded-full border border-gold/30 bg-gold/5 px-4 py-1.5 text-[10px] sm:text-xs font-semibold tracking-widest text-gold uppercase">
                 {p.hero.eyebrow}
@@ -87,7 +87,7 @@ export default function TentangPageClient() {
                 </Link>
               </motion.div>
 
-              <motion.div variants={fadeUp} className="grid grid-cols-3 gap-6 pt-8 border-t border-border/50">
+              <motion.div variants={fadeUp} className="grid grid-cols-3 gap-6 pt-6 border-t border-border/50">
                 {p.hero.stats.map((stat: any) => (
                   <div key={stat.label} className="space-y-1">
                     <div className="text-xl sm:text-2xl font-bold text-snow">{stat.value}</div>
@@ -97,7 +97,7 @@ export default function TentangPageClient() {
               </motion.div>
             </motion.div>
 
-            <div className="relative h-[400px] sm:h-[500px] lg:h-[600px]">
+            <div className="relative h-[320px] sm:h-[400px] lg:h-[480px]">
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}

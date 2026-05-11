@@ -316,7 +316,7 @@ export default function SiteHeader() {
 
           <div className="flex items-center gap-3">
             <Link
-              href={lang === "id" ? "/kontak" : "/contact"}
+              href="/services/consultation"
               className="hidden h-10 items-center justify-center rounded-full border border-gold/40 bg-gold/5 px-6 text-sm font-semibold text-gold transition-all duration-300 ease-out hover:-translate-y-[2px] hover:bg-gold/15 hover:border-gold/60 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 lg:inline-flex"
             >
               {dict.nav.consultation}
@@ -450,7 +450,7 @@ export default function SiteHeader() {
 
             <div className="pt-6 mt-2 border-t border-border">
               <Link
-                href={lang === "id" ? "/kontak" : "/contact"}
+                href="/services/consultation"
                 className="flex min-h-[52px] items-center justify-center rounded-full border border-gold/40 bg-gold/10 px-6 text-base font-semibold text-gold transition-all duration-300 hover:bg-gold/20 hover:border-gold/60 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] active:scale-95"
                 onClick={() => setIsOpen(false)}
               >

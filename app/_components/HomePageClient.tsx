@@ -267,17 +267,17 @@ export default function HomePageClient() {
     <div className="relative overflow-hidden bg-ink text-snow">
       <section id="home" className="relative lg:min-h-[calc(100svh-5rem)] border-b border-border/70 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(201,162,39,0.12),transparent_50%),radial-gradient(circle_at_85%_20%,rgba(255,255,255,0.05),transparent_35%)] lg:bg-[radial-gradient(circle_at_20%_20%,rgba(201,162,39,0.14),transparent_40%),radial-gradient(circle_at_85%_20%,rgba(255,255,255,0.08),transparent_35%)]" />
-        <Container className="relative pt-12 pb-16 sm:pt-16 sm:pb-20 lg:pt-10 lg:pb-16">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-            <motion.div variants={stagger} initial="hidden" animate="show" className="flex flex-col items-center text-center space-y-6 lg:items-start lg:text-left lg:space-y-8">
+        <Container className="relative pt-8 pb-12 sm:pt-12 sm:pb-16 lg:pt-6 lg:pb-10">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+            <motion.div variants={stagger} initial="hidden" animate="show" className="flex flex-col items-center text-center space-y-5 lg:items-start lg:text-left lg:space-y-6">
               <motion.div
                 variants={fadeLeft}
                 className="inline-flex items-center rounded-full border border-border bg-surface/60 px-4 py-1.5 text-[10px] sm:text-xs font-medium tracking-[0.18em] text-snow/80 backdrop-blur-sm"
               >
                 {dict.hero.badge}
               </motion.div>
-              <motion.div variants={fadeLeft} className="space-y-4 lg:space-y-5">
-                <h1 className="[font-family:var(--font-display)] max-w-2xl text-3xl sm:text-4xl leading-tight tracking-tight text-snow lg:text-5xl lg:leading-[1.14] lg:tracking-[-0.01em]">
+              <motion.div variants={fadeLeft} className="space-y-3 lg:space-y-4">
+                <h1 className="max-w-4xl text-2xl sm:text-3xl lg:text-5xl font-black uppercase tracking-tight leading-[1.1] italic text-snow">
                   {dict.hero.title}
                 </h1>
                 <p className="max-w-prose text-sm sm:text-base leading-relaxed text-snow/72 lg:max-w-xl lg:leading-8">
@@ -308,7 +308,7 @@ export default function HomePageClient() {
                   </span>
                 ))}
               </motion.div>
-              <motion.div variants={fadeUp} className="grid w-full grid-cols-1 sm:grid-cols-3 gap-3 pt-4 lg:pt-2">
+              <motion.div variants={fadeUp} className="grid w-full grid-cols-1 sm:grid-cols-3 gap-3 pt-2 lg:pt-1">
                 {[
                   { value: "10+", label: dict.hero.stats[0].label },
                   { value: "100+", label: dict.hero.stats[1].label },
@@ -316,7 +316,7 @@ export default function HomePageClient() {
                 ].map((item) => (
                   <article
                     key={item.label}
-                    className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface/60 p-4 sm:p-5 lg:items-start lg:justify-start"
+                    className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface/60 p-3 sm:p-4 lg:items-start lg:justify-start"
                   >
                     <div className="text-2xl sm:text-3xl lg:text-2xl font-semibold tracking-tight text-gold">
                       {item.value}
@@ -329,7 +329,7 @@ export default function HomePageClient() {
               </motion.div>
             </motion.div>
 
-            <div className="relative w-full mt-10 lg:mt-0 lg:h-[620px]">
+            <div className="relative w-full mt-8 lg:mt-0 lg:h-[560px]">
               {/* Image 1: Main Action (Top Right on Desktop) */}
               <motion.div
                 initial={{ opacity: 0, x: 40, y: -20 }}
@@ -423,7 +423,7 @@ export default function HomePageClient() {
               <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.2em] text-gold">
                 {dict.about.eyebrow}
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight text-snow">
+              <h2 className="text-3xl lg:text-5xl font-black uppercase tracking-tighter italic text-snow">
                 {dict.about.title}
               </h2>
               <p className="max-w-prose text-sm sm:text-base leading-relaxed text-snow/72 lg:leading-8">
@@ -493,7 +493,7 @@ export default function HomePageClient() {
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="space-y-8 sm:space-y-9">
             <motion.div variants={fadeUp} className="max-w-3xl space-y-3 sm:space-y-4">
               <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.2em] text-gold">{dict.services.eyebrow}</div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight text-snow">
+              <h2 className="text-3xl lg:text-5xl font-black uppercase tracking-tighter italic text-snow">
                 {dict.services.title}
               </h2>
               <p className="max-w-prose text-sm sm:text-base leading-relaxed text-snow/72 lg:leading-8">
@@ -544,7 +544,7 @@ export default function HomePageClient() {
           <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="space-y-12 sm:space-y-16">
             <motion.div variants={fadeUp} className="text-center space-y-4 max-w-3xl mx-auto">
               <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.25em] text-gold">{dict.gallery.eyebrow}</div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-snow leading-tight">
+              <h2 className="text-3xl lg:text-5xl font-black uppercase tracking-tighter italic text-snow leading-tight">
                 {dict.gallery.title}
               </h2>
               <p className="text-base sm:text-lg leading-relaxed text-snow/70">
@@ -614,7 +614,7 @@ export default function HomePageClient() {
                 <div className="text-[11px] sm:text-xs font-medium uppercase tracking-[0.25em] text-gold">
                   {dict.about.testimonials}
                 </div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-snow leading-[1.1] lg:max-w-xl">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tighter italic text-snow leading-[1.1] lg:max-w-xl">
                   {lang === 'id'
                     ? "Temukan bagaimana PRADA BC membantu atlet tumbuh dan berprestasi."
                     : "Discover how PRADA BC helps athletes grow and perform."}
@@ -651,7 +651,7 @@ export default function HomePageClient() {
             <div className="relative z-10 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
               <div className="space-y-8 sm:space-y-10 text-center lg:text-left">
                 <div className="space-y-4 sm:space-y-6">
-                  <h2 className="text-4xl sm:text-5xl lg:text-6xl text-[#18181B] font-black tracking-tight leading-[1.05]">
+                  <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] italic text-[#18181B]">
                     {dict.ctaHome.heading}
                   </h2>
                   <p className="text-lg sm:text-xl text-[#5F5F5F] leading-relaxed max-w-2xl mx-auto lg:mx-0">
