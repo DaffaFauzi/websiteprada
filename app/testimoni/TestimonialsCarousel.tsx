@@ -85,6 +85,24 @@ export default function TestimonialsCarousel({ autoPlayMs = 6000 }: { autoPlayMs
     })
   };
 
+  const mobileVariants = {
+    enter: (dir: number) => ({
+      opacity: 0,
+      x: dir * 50,
+      scale: 0.95,
+    }),
+    center: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+    },
+    exit: (dir: number) => ({
+      opacity: 0,
+      x: -dir * 50,
+      scale: 0.95,
+    }),
+  };
+
   return (
     <div 
       className="relative w-full"
@@ -164,9 +182,10 @@ export default function TestimonialsCarousel({ autoPlayMs = 6000 }: { autoPlayMs
           <motion.div
             key={activeIndex}
             custom={direction}
-            initial={(dir) => ({ opacity: 0, x: dir * 50, scale: 0.95 })}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={(dir) => ({ opacity: 0, x: -dir * 50, scale: 0.95 })}
+            variants={mobileVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="rounded-[2.5rem] p-8 bg-white/90 backdrop-blur-sm border border-border/20 shadow-2xl relative"
           >
